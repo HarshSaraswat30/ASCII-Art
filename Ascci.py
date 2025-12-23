@@ -1,0 +1,186 @@
+import os
+import msvcrt as msv
+import sys
+
+try:
+    from colorama import init, Fore, Style
+    init()
+    COLORAMA_AVAILABLE = True
+except Exception:
+    COLORAMA_AVAILABLE = False
+    print("\n[colorama not installed] To enable colors run: pip install colorama\n")
+    sys.exit()
+RED = Fore.RED
+YELLOW = Fore.YELLOW
+GREEN = Fore.GREEN
+CYAN = Fore.CYAN
+RESET = Style.RESET_ALL
+
+data=[
+ '   #    ####    ####  ####   #####  #####   ####  #   #  #####    ###  #   #  #      #   #  #   #   ###   ####    ###   ####    ####  #####  #   #  #   #  #   #  #   #  #   #  #####          ###                         ###     #     ###    ###      #   #####   ###   #####   ###    ###          #                 #           ##          #        #       #   #       #                                                       #                                              ',
+ '  # #   #   #  #    # #   #  #      #      #    # #   #    #       #   #  #   #      ## ##  ##  #  #   #  #   #  #   #  #   #  #    #   #    #   #  #   #  #   #  #   #  #   #      #         #   #                       #   #   ##    #   #  #   #    ##   #      #   #      #  #   #  #   #   ###   #       ###       #   ###    #      ####  #                    #  #    #     ## #   ####    ###   ####    ####  ####    ####   #     #   #  #   #  #   #  #   #  #   #  ##### ',
+ ' #   #  #   #  #      #    # #      #      #      #   #    #       #   # #    #      # # #  # # #  #   #  #   #  #   #  #   #  #        #    #   #  #   #  #   #   # #    # #      #          # ###                #####  #  ##    #        #      #   # #   #      #         #   #   #  #   #      #  ####   #   #   ####  #   #  ####   #   #  ####     #       #   # #     #     # # #  #   #  #   #  #   #  #   #  #   #  #      ####   #   #  #   #  #   #   # #   #   #     #  ', 
+ ' #####  ####   #      #    # #####  #####  #  ### #####    #       #   ##     #      #   #  #  ##  #   #  ####   #   #  ####    ###     #    #   #  #   #  #   #    #      #      #           # # #         #####         # # #    #       #    ###   #  #   ####   ####     #     ###    ####   ####  #   #  #      #   #  #####   #      ####  #   #    #       #   ##      #     # # #  #   #  #   #  #   #  #   #  #       ###    #     #   #  #   #  # # #    #     ####    #   ',
+ ' #   #  #   #  #      #    # #      #      #    # #   #    #    #  #   # #    #      #   #  #   #  #   #  #      # # #  # #        #    #    #   #   # #   # # #   # #     #     #            # ###                #####  ##  #    #      #        #  #####      #  #   #   #     #   #      #  #   #  #   #  #   #  #   #  #       #         #  #   #    #    #  #   # #     #     #   #  #   #  #   #  ####    ####  #          #   #     #   #   # #   ## ##   # #       #   #    ',
+ ' #   #  #   #  #    # #   #  #      #      #    # #   #    #    #  #   #  #   #      #   #  #   #  #   #  #      #  #   #  #   #   #    #    #   #   # #   ## ##  #   #    #    #             #                           #   #    #     #     #   #     #   #   #  #   #   #     #   #  #   #   ####  ####    ###    ####   ###    #      ###   #   #    #     ##    #  #     ##   #   #  #   #   ###   #          #  #      ####    ##     ####    #    #   #  #   #   ###   ##### ',
+ ' #   #  ####    ####  ####   #####  #       ####  #   #  #####   ##    #   #  #####  #   #  #   #   ###   #       ## #  #   #   ###     #     ###     #    #   #  #   #    #    #####          ###   #####                 ###   #####  #####   ###      #    ###    ###    #      ###    ###                                                                                                            #          #                                                                '
+]
+
+
+def oneCharacter():
+    os.system("cls")
+    print("\n\n",CYAN+"*"*10+RESET,CYAN+"ASCII ART PROJECT"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+    print("\n\n",CYAN+"*"*10+RESET,CYAN+"One Character Module"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+    text = input(GREEN+"Enter a Character (Only One Character) -- "+RESET)
+    if len(text) != 1:
+        print(GREEN+"\n\nPlease Enter Only One Letter -- \n\n"+RESET)
+        oneCharacter()
+    else:
+        print(YELLOW+"\n\nYou Entered -- {0}\n\n".format(text)+RESET)
+        n=((ord(text)-65)*7 if ord(text)>=65 and ord(text)<=90 else 26*7 if text==" " else 27 * 7 if text == "@" else 28 * 7 if text == "_" else 29 * 7 if text == "-" else 30 * 7 if text == "=" else (31+ord(text)-48)*7 if ord(text)>=48 and ord(text)<=57 else (ord(text)-97+41)*7)
+        for i in data:
+            for j in range(n , n + 7):
+                print(RED+i[j]+RESET,end="")
+            print()
+
+def alphaNumWords():
+    os.system("cls")
+    sys.stdin.flush()
+    print("\n\n",CYAN+"*"*10+RESET,CYAN+"ASCII ART PROJECT"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+    print("\n\n",CYAN+"*"*10+RESET,CYAN+"One Character Module"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+    text = input(GREEN+"Enter String (output will show according to terminal size)-- "+RESET)
+    print(YELLOW+"\n\nYou Entered -- {0}\n\n".format(text)+RESET)
+    for i in data:        
+        for x in text:
+            n=((ord(x)-65)*7 if ord(x)>=65 and ord(x)<=90 else 26*7 if x==" " else 27 * 7 if x == "@" else 28 * 7 if x == "_" else 29 * 7 if x == "-" else 30 * 7 if x == "=" else (31+ord(x)-48)*7 if ord(x)>=48 and ord(x)<=57 else (ord(x)-97+41)*7)
+            for j in range(n , n + 7):
+                print(RED+i[j]+RESET,end="")
+        print()
+
+def alphaRange():
+     
+     os.system("cls")
+     sys.stdin.flush()
+     print("\n\n",CYAN+"*"*10+RESET,CYAN+"ASCII ART PROJECT"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+     print("\n\n",CYAN+"*"*10+RESET,CYAN+"One Character Module"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+     text = input(GREEN+"Enter Range Between (1 to 15 Character) & in Sequence Like (A-D) OR (z-u) -- "+RESET)
+     if not (len(text)==3):
+        print(GREEN+"\n\nPlease Enter Valid Range -- \n\n"+RESET)
+        alphaRange()
+     else:
+        print(YELLOW+"\n\nYou Entered -- {0}\n\n".format(text)+RESET)
+        temp=""
+        if text.isupper():
+            st=ord(text[0])-65
+            en=ord(text[2])-65
+            if st>en:
+                alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                temp = alphabet[en:st+1]
+                temp=temp[::-1]
+            else:
+                alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                temp = alphabet[st:en+1]
+            for i in data:
+                for x in temp:
+                    n=((ord(x)-65)*7 if ord(x)>=65 and ord(x)<=90 else 26*7 if x==" " else 27 * 7 if x == "@" else 28 * 7 if x == "_" else 29 * 7 if x == "-" else 30 * 7 if x == "=" else (31+ord(x)-48)*7 if ord(x)>=48 and ord(x)<=57 else (ord(x)-97+41)*7)
+                    for j in range(n , n + 7):
+                        print(RED+i[j]+RESET,end="")
+                print()
+        elif text.islower():
+            st=ord(text[0])-97
+            en=ord(text[2])-97
+            if st>en:
+                alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                temp = alphabet[en:st+1]
+                temp=temp[::-1]
+            else:
+                alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                temp = alphabet[st:en+1]
+            temp=temp.lower()
+            for i in data:
+                for x in temp:
+                    n=((ord(x)-65)*7 if ord(x)>=65 and ord(x)<=90 else 26*7 if x==" " else 27 * 7 if x == "@" else 28 * 7 if x == "_" else 29 * 7 if x == "-" else 30 * 7 if x == "=" else (31+ord(x)-48)*7 if ord(x)>=48 and ord(x)<=57 else (ord(x)-97+41)*7)
+                    for j in range(n , n + 7):
+                        print(RED+i[j]+RESET,end="")
+                print()
+        else:
+            alphaRange()
+
+def onlyAlpha():
+    os.system("cls")
+    sys.stdin.flush()
+    print("\n\n",CYAN+"*"*10+RESET,CYAN+"ASCII ART PROJECT"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+    print("\n\n",CYAN+"*"*10+RESET,CYAN+"One Character Module"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+    text = input(GREEN+"Enter String (Only <= 15 Character) -- "+RESET)
+    if not (len(text)>=1 and len(text)<=15):
+        print(GREEN+"\n\nPlease Enter Only <=15 Letter -- \n\n"+RESET)
+        msv.getch()
+        onlyAlpha()
+    else:
+        if text.isalpha() == False:
+            print(GREEN+"\n\nPlease Enter Only Alphabets -- \n\n"+RESET)
+            msv.getch()
+            onlyAlpha()
+        else:
+            print(GREEN+"\n\nYou Entered -- {0}\n\n".format(text)+RESET)
+            for i in data:        
+                for x in text:
+                    n=((ord(x)-65)*7 if ord(x)>=65 and ord(x)<=90 else 26*7 if x==" " else 27 * 7 if x == "@" else 28 * 7 if x == "_" else 29 * 7 if x == "-" else 30 * 7 if x == "=" else (31+ord(x)-48)*7 if ord(x)>=48 and ord(x)<=57 else (ord(x)-97+41)*7)
+                    for j in range(n , n + 7):
+                        print(RED+i[j]+RESET,end="")
+                print()
+
+def onlyNum():
+     os.system("cls")
+     sys.stdin.flush()
+     print("\n\n",CYAN+"*"*10+RESET,CYAN+"ASCII ART PROJECT"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+     print("\n\n",CYAN+"*"*10+RESET,CYAN+"One Character Module"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+     text = input(GREEN+"Enter String (Only <= 15 Character) -- "+RESET).upper()
+     if not (len(text)>=1 and len(text)<=15):
+        print(GREEN+"\n\nPlease Enter Only <=15 Letter -- \n\n"+RESET)
+        msv.getch()
+        onlyNum()
+     else:
+        if text.isnumeric() == False:
+            print(GREEN+"\n\nPlease Enter Only Numbers -- \n\n"+RESET)
+            msv.getch()
+            onlyNum()
+        else:
+            print(GREEN+"\n\nYou Entered -- {0}\n\n".format(text)+RESET)
+            for i in data:
+                for x in text:
+                    n =(31+ord(x)-48)*7
+                    for j in range(n , n + 7):
+                        print(RED+i[j]+RESET,end="")
+                print()
+
+def mainUI():
+    os.system("cls")
+    print("\n\n",CYAN+"*"*10+RESET,CYAN+"ASCII ART PROJECT"+RESET,CYAN+"*"*10+RESET,end="\n\n")
+    print(CYAN+"OPTIONS -- \n\n"+RESET)
+    print(YELLOW+"1. One Character"+RESET)
+    print(YELLOW+"2. Words"+RESET)
+    print(YELLOW+"3. Range (input in Sequence - Max 15 Letters)"+RESET)
+    print(YELLOW+"4. Only Alphabets"+RESET)
+    print(YELLOW+"5. Only Numbers"+RESET)
+    print(YELLOW+"6. Exit"+RESET)
+    print(GREEN+"\n\nEnter Your Choice -- "+RESET,end="")
+    ch = msv.getch()
+    if ch.decode() == "1":
+        oneCharacter()
+    elif ch.decode() == "2":
+        alphaNumWords()
+    elif ch.decode() == "3":
+        alphaRange()
+    elif ch.decode() == "4":
+        onlyAlpha()
+    elif ch.decode() == "5":
+        onlyNum()
+    elif ch.decode() == "6":
+        pass
+    
+    print(CYAN+"\n\nDo you want to continue Project.. Press h else any key..."+RESET)
+    ch = msv.getch()
+    if ch.decode() == "h" or ch.decode() == "h":
+        mainUI()
+mainUI()
